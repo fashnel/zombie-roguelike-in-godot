@@ -7,6 +7,8 @@ var last_velocity_normalized : Vector2 = Vector2.ZERO
 @onready var animation_player : AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine : PlayerStateMachine = $StateMachine
 
+signal DirectionChanged(new_direction : Vector2) 
+
 func _ready() -> void:
 	state_machine.Initialize(self)
 	pass
@@ -35,6 +37,7 @@ func SetDirection() -> bool:
 		return false
 	
 	cardinal_direction = new_dir
+	DirectionChanged.emit(new_dir)
 	return true
 
  

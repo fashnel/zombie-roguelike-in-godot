@@ -7,6 +7,7 @@ var attacking : bool = false
 
 @onready var animation_player : AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var audio : AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
+@onready var hurt_box : HurtBox = $"../../Interactions/HurtBox"
 @onready var walk : State = $"../Walk"
 @onready var idle : State = $"../Idle"
 
@@ -18,12 +19,17 @@ func Enter() -> void:
 	audio.pitch_scale = randf_range(0.9, 1.1)
 	audio.play()
 	attacking = true
+	
+	await get_tree().create_timer(0.25).timeout
+	hurt_box.monitoring = true 
 	pass
 	
 	
 func Exit() -> void:
 	animation_player.animation_finished.disconnect(EndAttack)
 	attacking = false
+	hurt_box.monitoring = false 
+	
 	pass
 	
 func Process(_delta : float) -> State:
@@ -42,6 +48,6 @@ func Physics(_delta : float) -> State:
 func HandleInput(_event : InputEvent) -> State:
 	return null
 	
-	#_newAnimName : String
+#_newAnimName : String
 func EndAttack() -> void:
 	attacking = false 

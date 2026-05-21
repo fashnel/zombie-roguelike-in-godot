@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cl3svt8fuet17"]
 
 [ext_resource type="Texture2D" uid="uid://bx7foephssbse" path="res://assets/entities/player/idle/down_1.PNG" id="1_a8ls1"]
-[ext_resource type="Script" uid="uid://b0q5if6nc3uig" path="res://scripts/player/player.gd" id="1_qfm1y"]
+[ext_resource type="Script" uid="uid://b0q5if6nc3uig" path="res://player/player.gd" id="1_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://4xpr4jif5ed7" path="res://assets/entities/player/attack/down_1.PNG" id="2_ke2ow"]
 [ext_resource type="Texture2D" uid="uid://qdied1ltdwnh" path="res://assets/entities/player/idle/down_2.PNG" id="2_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://k56m4caolm0v" path="res://assets/player_shadow.PNG" id="2_wnwbv"]
@@ -21,20 +21,21 @@
 [ext_resource type="Texture2D" uid="uid://cgeq2rp25cxdm" path="res://assets/entities/player/walk/left_2.PNG" id="11_ujl30"]
 [ext_resource type="Texture2D" uid="uid://yg1jb3em2xss" path="res://assets/entities/player/walk/left_1.PNG" id="12_31cv2"]
 [ext_resource type="Texture2D" uid="uid://dji4j1rbqrvse" path="res://assets/entities/player/idle/right_1.PNG" id="14_dt7fs"]
-[ext_resource type="Script" uid="uid://comiyru525qwp" path="res://scripts/player/player_state_machine.gd" id="14_f1ej7"]
-[ext_resource type="Script" uid="uid://d233kgb70i638" path="res://scripts/player/state_walk.gd" id="15_a8ls1"]
-[ext_resource type="Script" uid="uid://db7nrb2w2ul0n" path="res://scripts/player/state_idle.gd" id="15_oprun"]
+[ext_resource type="Script" uid="uid://comiyru525qwp" path="res://player/player_state_machine.gd" id="14_f1ej7"]
+[ext_resource type="Script" uid="uid://d233kgb70i638" path="res://player/state_walk.gd" id="15_a8ls1"]
+[ext_resource type="Script" uid="uid://db7nrb2w2ul0n" path="res://player/state_idle.gd" id="15_oprun"]
 [ext_resource type="Texture2D" uid="uid://cjn3txpv4bo3u" path="res://assets/entities/player/idle/right_2.PNG" id="15_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://du7hyno8wagsr" path="res://assets/entities/player/walk/up_1.PNG" id="15_wqfne"]
 [ext_resource type="Texture2D" uid="uid://b2i6a8wnkg8gp" path="res://assets/entities/player/walk/up_2.PNG" id="16_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://sjwhyhfg2kc3" path="res://assets/entities/player/walk/right_2.PNG" id="22_gl8cc"]
 [ext_resource type="Texture2D" uid="uid://bkgtx15xwqkf3" path="res://assets/entities/player/walk/right_1.PNG" id="23_487ah"]
-[ext_resource type="Script" uid="uid://cvetgx477g70r" path="res://scripts/player/state_attack.gd" id="24_487ah"]
+[ext_resource type="Script" uid="uid://cvetgx477g70r" path="res://player/state_attack.gd" id="24_487ah"]
 [ext_resource type="AudioStream" uid="uid://qggddmywjlo5" path="res://assets/sound/sfx/knife_attack.wav" id="29_wqfne"]
+[ext_resource type="PackedScene" uid="uid://bkvn6waff7gip" path="res://GeneralNodes/hurt_box/hurt_box.tscn" id="32_1s1yo"]
+[ext_resource type="Script" uid="uid://cfxxai1txrhiy" path="res://player/InteractionsHost.gd" id="32_5ejfk"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onqr8"]
-radius = 7.0
-height = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_2uvqg"]
+radius = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md1ol"]
 atlas = ExtResource("2_ke2ow")
@@ -267,20 +268,25 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ejfk"]
+radius = 7.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1380528057]
 collision_mask = 16
 script = ExtResource("1_qfm1y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=915186237]
-shape = SubResource("CapsuleShape2D_onqr8")
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_2uvqg")
 
 [node name="ShadowSprite" type="Sprite2D" parent="." unique_id=1367078046]
+self_modulate = Color(0.6705983, 0.6705983, 0.6705983, 0.8)
 position = Vector2(0, 2)
 texture = ExtResource("2_wnwbv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=756353466]
 sprite_frames = SubResource("SpriteFrames_ur7pv")
-animation = &"walk_right"
+animation = &"idle_down"
 autoplay = "idle_down"
 
 [node name="StateMachine" type="Node" parent="." unique_id=1088080846]
@@ -305,3 +311,15 @@ limit_enabled = false
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio" unique_id=764742875]
 volume_db = 5.0
 max_polyphony = 4
+
+[node name="Interactions" type="Node2D" parent="." unique_id=1172970771]
+script = ExtResource("32_5ejfk")
+
+[node name="HurtBox" parent="Interactions" unique_id=533934817 instance=ExtResource("32_1s1yo")]
+collision_mask = 256
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/HurtBox" unique_id=2018142940]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_5ejfk")
+debug_color = Color(0.8608217, 0, 0.24422756, 0.41960785)
