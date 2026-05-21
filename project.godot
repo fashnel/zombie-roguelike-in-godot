@@ -18,6 +18,10 @@ config/name="Zombie-Roguelike"
 run/main_scene="uid://b6w8faufeijg0"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
+[autoload]
+
+LevelManager="*uid://cso6gbovgcc1y"
+
 [display]
 
 window/size/viewport_width=240

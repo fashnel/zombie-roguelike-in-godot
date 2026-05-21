@@ -5,7 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://berrlk5h22edu" path="res://GeneralNodes/hit_box/hit_box.tscn" id="3_4fkd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5x15"]
-size = Vector2(16, 12)
+size = Vector2(16, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj67i"]
+size = Vector2(16, 10)
 
 [node name="Box" type="Node2D" unique_id=1314862224]
 script = ExtResource("1_sj67i")
@@ -18,7 +21,7 @@ texture = ExtResource("2_nfrsl")
 position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=73485312]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_f5x15")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=571753195]
@@ -27,5 +30,6 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=109402536]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_f5x15")
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_sj67i")
+debug_color = Color(0.97804016, 0, 0.3957762, 0.41960785)

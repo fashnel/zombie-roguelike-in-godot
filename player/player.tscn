@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://qggddmywjlo5" path="res://assets/sound/sfx/knife_attack.wav" id="29_wqfne"]
 [ext_resource type="PackedScene" uid="uid://bkvn6waff7gip" path="res://GeneralNodes/hurt_box/hurt_box.tscn" id="32_1s1yo"]
 [ext_resource type="Script" uid="uid://cfxxai1txrhiy" path="res://player/InteractionsHost.gd" id="32_5ejfk"]
+[ext_resource type="Script" uid="uid://dwdtxedv8avki" path="res://player/camera.gd" id="32_jd2rm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uvqg"]
 radius = 5.0
@@ -304,7 +305,8 @@ attack_sound = ExtResource("29_wqfne")
 script = ExtResource("15_oprun")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1410316906]
-limit_enabled = false
+editor_draw_limits = true
+script = ExtResource("32_jd2rm")
 
 [node name="Audio" type="Node2D" parent="." unique_id=20606650]
 

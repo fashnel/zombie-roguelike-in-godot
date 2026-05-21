@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ij6265gojmnx" path="res://assets/tiles/sand.PNG" id="3_m8wj6"]
 [ext_resource type="Texture2D" uid="uid://c75dbbh7svefp" path="res://assets/tiles/snow.PNG" id="4_lnsk7"]
 [ext_resource type="Texture2D" uid="uid://cvn6ca8vhku8d" path="res://assets/tiles/water.PNG" id="5_rsduv"]
+[ext_resource type="Script" uid="uid://bd8in43m40d4j" path="res://tile_maps/LevelTileMap.gd" id="6_nd4on"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_seaj6"]
 texture = ExtResource("1_vghte")
@@ -40,3 +41,4 @@ sources/4 = SubResource("TileSetAtlasSource_81m1e")
 z_index = -1
 tile_set = SubResource("TileSet_xl07v")
 format = 2
+script = ExtResource("6_nd4on")
