@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://w5u4qanblw"]
+
+[ext_resource type="Texture2D" uid="uid://ccasbngwcjjng" path="res://assets/tiles/grass.PNG" id="1_vghte"]
+[ext_resource type="Texture2D" uid="uid://bej0vxbih5ck4" path="res://assets/tiles/earth.PNG" id="2_2u85l"]
+[ext_resource type="Texture2D" uid="uid://ij6265gojmnx" path="res://assets/tiles/sand.PNG" id="3_m8wj6"]
+[ext_resource type="Texture2D" uid="uid://c75dbbh7svefp" path="res://assets/tiles/snow.PNG" id="4_lnsk7"]
+[ext_resource type="Texture2D" uid="uid://cvn6ca8vhku8d" path="res://assets/tiles/water.PNG" id="5_rsduv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_seaj6"]
+texture = ExtResource("1_vghte")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4tqa6"]
+texture = ExtResource("2_2u85l")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ickr"]
+texture = ExtResource("3_m8wj6")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pioo0"]
+texture = ExtResource("4_lnsk7")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_81m1e"]
+texture = ExtResource("5_rsduv")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_xl07v"]
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_seaj6")
+sources/1 = SubResource("TileSetAtlasSource_4tqa6")
+sources/2 = SubResource("TileSetAtlasSource_6ickr")
+sources/3 = SubResource("TileSetAtlasSource_pioo0")
+sources/4 = SubResource("TileSetAtlasSource_81m1e")
+
+[node name="Grass" type="TileMap" unique_id=356847732]
+z_index = -1
+tile_set = SubResource("TileSet_xl07v")
+format = 2
