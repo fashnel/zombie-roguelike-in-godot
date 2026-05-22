@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://ct7fduulfkx2b"]
+
+[ext_resource type="Script" uid="uid://cng7ogoriiee6" path="res://Enemies/Scripts/enemy.gd" id="1_kt5al"]
+[ext_resource type="Texture2D" uid="uid://haxyehxv61om" path="res://assets/entities/zombie/idle/down_1.PNG" id="1_xllce"]
+[ext_resource type="Texture2D" uid="uid://brwajfq27ahrg" path="res://assets/entities/zombie/idle/down_2.PNG" id="2_kt5al"]
+[ext_resource type="Texture2D" uid="uid://0ntr6w7l2er" path="res://assets/entities/zombie/idle/left_1.PNG" id="3_6b168"]
+[ext_resource type="Texture2D" uid="uid://cqvco7sj4iiv4" path="res://assets/entities/zombie/idle/left_2.PNG" id="4_ivmfb"]
+[ext_resource type="Texture2D" uid="uid://3b3cuvn7qx7q" path="res://assets/entities/zombie/idle/right_1.PNG" id="5_d85x4"]
+[ext_resource type="Texture2D" uid="uid://bcee7ae5y1gtg" path="res://assets/entities/zombie/idle/right_2.PNG" id="6_88pdl"]
+[ext_resource type="Texture2D" uid="uid://rgs016rxwk60" path="res://assets/entities/zombie/idle/up_1.PNG" id="7_fvwp1"]
+[ext_resource type="Texture2D" uid="uid://dfcq6s3bpv4yn" path="res://assets/entities/zombie/idle/up_2.PNG" id="8_8ncuj"]
+[ext_resource type="Texture2D" uid="uid://btaefvg6eaol5" path="res://assets/entities/zombie/walk/down_2.PNG" id="9_a03xx"]
+[ext_resource type="Texture2D" uid="uid://y8t4cwbffcjc" path="res://assets/entities/zombie/walk/down_1.PNG" id="10_mk5ap"]
+[ext_resource type="Texture2D" uid="uid://ddsxyyl8e1w0d" path="res://assets/entities/zombie/walk/left_2.PNG" id="11_h3jsd"]
+[ext_resource type="Texture2D" uid="uid://b4cjcost2masu" path="res://assets/entities/zombie/walk/left_1.PNG" id="12_1n65e"]
+[ext_resource type="Texture2D" uid="uid://dviwj3m5sduq5" path="res://assets/entities/zombie/walk/right_2.PNG" id="13_kta0w"]
+[ext_resource type="Texture2D" uid="uid://db2au3g4ytguu" path="res://assets/entities/zombie/walk/right_1.PNG" id="14_q04yy"]
+[ext_resource type="Texture2D" uid="uid://oaeub3nmh0cs" path="res://assets/entities/zombie/walk/up_2.PNG" id="15_w1l6l"]
+[ext_resource type="Texture2D" uid="uid://brgi8ses3x4kt" path="res://assets/entities/zombie/walk/up_1.PNG" id="16_yae75"]
+[ext_resource type="Script" uid="uid://cnjfk4h037nw1" path="res://Enemies/Scripts/EnemyStateMachine.gd" id="18_6b168"]
+[ext_resource type="Script" uid="uid://d16sc0j7iypwj" path="res://Enemies/Scripts/States/enemy_state_idle.gd" id="19_ivmfb"]
+[ext_resource type="Script" uid="uid://dmuv0rcvawgg4" path="res://Enemies/Scripts/States/enemy_state_wander.gd" id="20_d85x4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xllce"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4obea"]
+atlas = ExtResource("1_xllce")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj3po"]
+atlas = ExtResource("2_kt5al")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsdkf"]
+atlas = ExtResource("3_6b168")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg28h"]
+atlas = ExtResource("4_ivmfb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exw8w"]
+atlas = ExtResource("5_d85x4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_467a3"]
+atlas = ExtResource("6_88pdl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upwa1"]
+atlas = ExtResource("7_fvwp1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbrpu"]
+atlas = ExtResource("8_8ncuj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ijge"]
+atlas = ExtResource("9_a03xx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq15n"]
+atlas = ExtResource("10_mk5ap")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge0w0"]
+atlas = ExtResource("11_h3jsd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snta3"]
+atlas = ExtResource("12_1n65e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k111i"]
+atlas = ExtResource("13_kta0w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54m3i"]
+atlas = ExtResource("14_q04yy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvppf"]
+atlas = ExtResource("15_w1l6l")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjqlq"]
+atlas = ExtResource("16_yae75")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0x5pr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4obea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj3po")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsdkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg28h")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exw8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_467a3")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upwa1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbrpu")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ijge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq15n")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge0w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snta3")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k111i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54m3i")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvppf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjqlq")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 3.0
+}]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xllce"]
+load_path = "res://.godot/imported/player_shadow.PNG-0689348f55c599e5a290be71961f3186.ctex"
+
+[node name="Zombie" type="CharacterBody2D" unique_id=839347244]
+collision_layer = 256
+collision_mask = 16
+script = ExtResource("1_kt5al")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034104609]
+shape = SubResource("CircleShape2D_xllce")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=622123306]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_0x5pr")
+animation = &"walk_up"
+autoplay = "idle_down"
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=1628996863]
+self_modulate = Color(0.6705983, 0.6705983, 0.6705983, 0.8)
+show_behind_parent = true
+position = Vector2(0, -3)
+texture = SubResource("CompressedTexture2D_xllce")
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=351180870]
+script = ExtResource("18_6b168")
+
+[node name="Idle" type="Node" parent="EnemyStateMachine" unique_id=915869637 node_paths=PackedStringArray("after_idle_state")]
+script = ExtResource("19_ivmfb")
+state_duration_max = 3.0
+after_idle_state = NodePath("../Wander")
+
+[node name="Wander" type="Node" parent="EnemyStateMachine" unique_id=833237953 node_paths=PackedStringArray("next_state")]
+script = ExtResource("20_d85x4")
+state_cycles_max = 10
+next_state = NodePath("../Idle")

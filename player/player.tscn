@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cl3svt8fuet17"]
 
 [ext_resource type="Texture2D" uid="uid://bx7foephssbse" path="res://assets/entities/player/idle/down_1.PNG" id="1_a8ls1"]
-[ext_resource type="Script" uid="uid://b0q5if6nc3uig" path="res://player/player.gd" id="1_qfm1y"]
+[ext_resource type="Script" uid="uid://b0q5if6nc3uig" path="res://player/Scripts/player.gd" id="1_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://4xpr4jif5ed7" path="res://assets/entities/player/attack/down_1.PNG" id="2_ke2ow"]
 [ext_resource type="Texture2D" uid="uid://qdied1ltdwnh" path="res://assets/entities/player/idle/down_2.PNG" id="2_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://k56m4caolm0v" path="res://assets/player_shadow.PNG" id="2_wnwbv"]
@@ -21,19 +21,19 @@
 [ext_resource type="Texture2D" uid="uid://cgeq2rp25cxdm" path="res://assets/entities/player/walk/left_2.PNG" id="11_ujl30"]
 [ext_resource type="Texture2D" uid="uid://yg1jb3em2xss" path="res://assets/entities/player/walk/left_1.PNG" id="12_31cv2"]
 [ext_resource type="Texture2D" uid="uid://dji4j1rbqrvse" path="res://assets/entities/player/idle/right_1.PNG" id="14_dt7fs"]
-[ext_resource type="Script" uid="uid://comiyru525qwp" path="res://player/player_state_machine.gd" id="14_f1ej7"]
-[ext_resource type="Script" uid="uid://d233kgb70i638" path="res://player/state_walk.gd" id="15_a8ls1"]
-[ext_resource type="Script" uid="uid://db7nrb2w2ul0n" path="res://player/state_idle.gd" id="15_oprun"]
+[ext_resource type="Script" uid="uid://comiyru525qwp" path="res://player/Scripts/StateMachine/player_state_machine.gd" id="14_f1ej7"]
+[ext_resource type="Script" uid="uid://d233kgb70i638" path="res://player/Scripts/StateMachine/state_walk.gd" id="15_a8ls1"]
+[ext_resource type="Script" uid="uid://db7nrb2w2ul0n" path="res://player/Scripts/StateMachine/state_idle.gd" id="15_oprun"]
 [ext_resource type="Texture2D" uid="uid://cjn3txpv4bo3u" path="res://assets/entities/player/idle/right_2.PNG" id="15_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://du7hyno8wagsr" path="res://assets/entities/player/walk/up_1.PNG" id="15_wqfne"]
 [ext_resource type="Texture2D" uid="uid://b2i6a8wnkg8gp" path="res://assets/entities/player/walk/up_2.PNG" id="16_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://sjwhyhfg2kc3" path="res://assets/entities/player/walk/right_2.PNG" id="22_gl8cc"]
 [ext_resource type="Texture2D" uid="uid://bkgtx15xwqkf3" path="res://assets/entities/player/walk/right_1.PNG" id="23_487ah"]
-[ext_resource type="Script" uid="uid://cvetgx477g70r" path="res://player/state_attack.gd" id="24_487ah"]
+[ext_resource type="Script" uid="uid://cvetgx477g70r" path="res://player/Scripts/StateMachine/state_attack.gd" id="24_487ah"]
 [ext_resource type="AudioStream" uid="uid://qggddmywjlo5" path="res://assets/sound/sfx/knife_attack.wav" id="29_wqfne"]
 [ext_resource type="PackedScene" uid="uid://bkvn6waff7gip" path="res://GeneralNodes/hurt_box/hurt_box.tscn" id="32_1s1yo"]
-[ext_resource type="Script" uid="uid://cfxxai1txrhiy" path="res://player/InteractionsHost.gd" id="32_5ejfk"]
-[ext_resource type="Script" uid="uid://dwdtxedv8avki" path="res://player/camera.gd" id="32_jd2rm"]
+[ext_resource type="Script" uid="uid://cfxxai1txrhiy" path="res://player/Scripts/InteractionsHost.gd" id="32_5ejfk"]
+[ext_resource type="Script" uid="uid://dwdtxedv8avki" path="res://player/Scripts/camera.gd" id="32_jd2rm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uvqg"]
 radius = 5.0
@@ -273,6 +273,7 @@ animations = [{
 radius = 7.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1380528057]
+position = Vector2(0, -5)
 collision_mask = 16
 script = ExtResource("1_qfm1y")
 
@@ -305,6 +306,8 @@ attack_sound = ExtResource("29_wqfne")
 script = ExtResource("15_oprun")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1410316906]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 editor_draw_limits = true
 script = ExtResource("32_jd2rm")
 

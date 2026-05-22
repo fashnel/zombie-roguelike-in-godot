@@ -10,6 +10,7 @@ var last_velocity_normalized : Vector2 = Vector2.ZERO
 signal DirectionChanged(new_direction : Vector2) 
 
 func _ready() -> void:
+	PlayerManager.player = self
 	state_machine.Initialize(self)
 	pass
 
@@ -19,6 +20,8 @@ func _process(delta: float) -> void:
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down")
 	).normalized()
+
+func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 

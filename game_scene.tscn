@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cl3svt8fuet17" path="res://player/player.tscn" id="1_v1wow"]
 [ext_resource type="PackedScene" uid="uid://w5u4qanblw" path="res://tile_maps/grass.tscn" id="2_mixcd"]
 [ext_resource type="PackedScene" uid="uid://btdjog5oyws2g" path="res://Props/Storages/Box/Box.tscn" id="3_mj2jn"]
+[ext_resource type="PackedScene" uid="uid://ct7fduulfkx2b" path="res://Enemies/Zombie/zombie.tscn" id="4_mixcd"]
 
 [node name="Game_scene" type="Node2D" unique_id=298571282]
 y_sort_enabled = true
@@ -29,3 +30,12 @@ position = Vector2(178, 43)
 
 [node name="Box3" parent="." unique_id=636815893 instance=ExtResource("3_mj2jn")]
 position = Vector2(247, -61)
+
+[node name="Zombie" parent="." unique_id=839347244 instance=ExtResource("4_mixcd")]
+position = Vector2(123, 138)
+
+[node name="Zombie2" parent="." unique_id=836431611 instance=ExtResource("4_mixcd")]
+position = Vector2(123, 138)
+
+[node name="Zombie3" parent="." unique_id=1972349085 instance=ExtResource("4_mixcd")]
+position = Vector2(123, 138)

@@ -1,42 +1,41 @@
-class_name PlayerStateMachine extends Node
+class_name EnemyStateMachine extends State
 
-var states : Array[ State ]
-var prev_state : State
-var current_state : State
+var states : Array[EnemyState]
+var prev_state : EnemyState
+var current_state : EnemyState
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta : float) -> void:
+func _process(delta: float) -> void:
 	ChangeState(current_state.Process(delta))
+	pass
 	
-	
-func _physics_process(delta : float) -> void:
+func _physics_process(delta: float) -> void:
 	ChangeState(current_state.Physics(delta))
+	pass
 	
-	
-func _unhandled_input(event: InputEvent) -> void: 
-	ChangeState(current_state.HandleInput(event))
-	
-
-func Initialize(_player : Player ) -> void:
+func Initialize(_enemy : Enemy ) -> void:
 	states = []
 	
 	for c in get_children():
-		if c is State:
+		if c is EnemyState:
 			states.append(c) 
 	
+	for s in states:
+		s.enemy = _enemy
+		s.state_machine = self
+		s.init()
+		
 	if states.size() > 0:
-		states[0].player = _player
 		ChangeState(states[0])
 		process_mode = Node.PROCESS_MODE_INHERIT
 
-func ChangeState(new_state : State) -> void:
+	
+func ChangeState(new_state : EnemyState) -> void:
 	if new_state == null || new_state == current_state:
 		return
 	if current_state:
@@ -45,4 +44,3 @@ func ChangeState(new_state : State) -> void:
 	prev_state = current_state
 	current_state = new_state
 	current_state.Enter()
-	

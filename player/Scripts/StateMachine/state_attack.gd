@@ -16,7 +16,7 @@ func Enter() -> void:
 	animation_player.animation_finished.connect(EndAttack)
 	
 	audio.stream = attack_sound
-	audio.pitch_scale = randf_range(0.9, 1.1)
+	audio.pitch_scale = randf_range(0.8, 1.2)
 	audio.play()
 	attacking = true
 	
