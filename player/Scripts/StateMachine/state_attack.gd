@@ -20,8 +20,10 @@ func Enter() -> void:
 	audio.play()
 	attacking = true
 	
-	await get_tree().create_timer(0.25).timeout
-	hurt_box.monitoring = true 
+	var timer = get_tree().create_timer(0.25)
+	await timer.timeout
+	if attacking:
+		hurt_box.monitoring = true
 	pass
 	
 	

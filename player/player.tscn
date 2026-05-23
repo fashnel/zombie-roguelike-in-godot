@@ -275,8 +275,8 @@ animations = [{
 radius = 7.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ge24q"]
-radius = 5.0
-height = 10.0
+radius = 4.0
+height = 8.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1380528057]
 position = Vector2(0, -5)

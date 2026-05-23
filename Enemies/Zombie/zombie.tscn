@@ -30,6 +30,10 @@
 radius = 7.0
 height = 16.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mk5ap"]
+radius = 7.0
+height = 16.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xllce"]
 radius = 5.0
 
@@ -207,7 +211,7 @@ debug_color = Color(0.99377733, 0, 0.23942569, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=716023412]
 position = Vector2(0, -5)
-shape = SubResource("CapsuleShape2D_fvwp1")
+shape = SubResource("CapsuleShape2D_mk5ap")
 debug_color = Color(0.64751464, 0.5201692, 0, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034104609]

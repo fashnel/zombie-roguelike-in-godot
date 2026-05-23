@@ -8,15 +8,6 @@
 [node name="Game_scene" type="Node2D" unique_id=298571282]
 y_sort_enabled = true
 
-[node name="Zombie4" parent="." unique_id=839347244 instance=ExtResource("4_mixcd")]
-position = Vector2(159, 89)
-
-[node name="Zombie5" parent="." unique_id=1814911694 instance=ExtResource("4_mixcd")]
-position = Vector2(159, 114)
-
-[node name="Zombie6" parent="." unique_id=1879007720 instance=ExtResource("4_mixcd")]
-position = Vector2(187, 88)
-
 [node name="Player" parent="." unique_id=1380528057 instance=ExtResource("1_v1wow")]
 position = Vector2(63, 50)
 motion_mode = 1
@@ -38,28 +29,145 @@ position = Vector2(159, 42)
 position = Vector2(178, 43)
 
 [node name="Zombie" parent="." unique_id=1355059744 instance=ExtResource("4_mixcd")]
-position = Vector2(100, 135)
+position = Vector2(105, 125)
 
 [node name="Zombie2" parent="." unique_id=836431611 instance=ExtResource("4_mixcd")]
-position = Vector2(123, 163)
-
-[node name="Zombie3" parent="." unique_id=1972349085 instance=ExtResource("4_mixcd")]
-position = Vector2(151, 137)
+position = Vector2(124, 125)
 
 [node name="Zombie7" parent="." unique_id=1554053203 instance=ExtResource("4_mixcd")]
-position = Vector2(87, 77)
+position = Vector2(106, 102)
 
 [node name="Zombie8" parent="." unique_id=608232994 instance=ExtResource("4_mixcd")]
 position = Vector2(87, 102)
 
 [node name="Zombie9" parent="." unique_id=1345131882 instance=ExtResource("4_mixcd")]
-position = Vector2(115, 76)
-
-[node name="Zombie10" parent="." unique_id=373536774 instance=ExtResource("4_mixcd")]
-position = Vector2(28, 123)
-
-[node name="Zombie11" parent="." unique_id=1461253927 instance=ExtResource("4_mixcd")]
-position = Vector2(51, 151)
+position = Vector2(124, 103)
 
 [node name="Zombie12" parent="." unique_id=1437442638 instance=ExtResource("4_mixcd")]
-position = Vector2(79, 125)
+position = Vector2(85, 125)
+
+[node name="Zombie3" parent="." unique_id=839347244 instance=ExtResource("4_mixcd")]
+position = Vector2(104, 168)
+
+[node name="Zombie4" parent="." unique_id=1114263889 instance=ExtResource("4_mixcd")]
+position = Vector2(123, 168)
+
+[node name="Zombie10" parent="." unique_id=1067744166 instance=ExtResource("4_mixcd")]
+position = Vector2(105, 145)
+
+[node name="Zombie11" parent="." unique_id=489612876 instance=ExtResource("4_mixcd")]
+position = Vector2(86, 145)
+
+[node name="Zombie13" parent="." unique_id=106997800 instance=ExtResource("4_mixcd")]
+position = Vector2(123, 146)
+
+[node name="Zombie14" parent="." unique_id=611746325 instance=ExtResource("4_mixcd")]
+position = Vector2(84, 168)
+
+[node name="Zombie5" parent="." unique_id=1490179202 instance=ExtResource("4_mixcd")]
+position = Vector2(164, 170)
+
+[node name="Zombie6" parent="." unique_id=571471392 instance=ExtResource("4_mixcd")]
+position = Vector2(183, 170)
+
+[node name="Zombie15" parent="." unique_id=245350687 instance=ExtResource("4_mixcd")]
+position = Vector2(165, 147)
+
+[node name="Zombie16" parent="." unique_id=1832661779 instance=ExtResource("4_mixcd")]
+position = Vector2(146, 147)
+
+[node name="Zombie17" parent="." unique_id=297700298 instance=ExtResource("4_mixcd")]
+position = Vector2(183, 148)
+
+[node name="Zombie18" parent="." unique_id=1235290235 instance=ExtResource("4_mixcd")]
+position = Vector2(144, 170)
+
+[node name="Zombie19" parent="." unique_id=719658820 instance=ExtResource("4_mixcd")]
+position = Vector2(165, 126)
+
+[node name="Zombie20" parent="." unique_id=1394448683 instance=ExtResource("4_mixcd")]
+position = Vector2(184, 126)
+
+[node name="Zombie21" parent="." unique_id=762129725 instance=ExtResource("4_mixcd")]
+position = Vector2(166, 103)
+
+[node name="Zombie22" parent="." unique_id=1634389323 instance=ExtResource("4_mixcd")]
+position = Vector2(147, 103)
+
+[node name="Zombie23" parent="." unique_id=1939574797 instance=ExtResource("4_mixcd")]
+position = Vector2(184, 104)
+
+[node name="Zombie24" parent="." unique_id=239615463 instance=ExtResource("4_mixcd")]
+position = Vector2(145, 126)
+
+[node name="Zombie25" parent="." unique_id=1625782480 instance=ExtResource("4_mixcd")]
+position = Vector2(37, 91)
+
+[node name="Zombie26" parent="." unique_id=47876809 instance=ExtResource("4_mixcd")]
+position = Vector2(56, 91)
+
+[node name="Zombie27" parent="." unique_id=44577030 instance=ExtResource("4_mixcd")]
+position = Vector2(38, 68)
+
+[node name="Zombie28" parent="." unique_id=1378056875 instance=ExtResource("4_mixcd")]
+position = Vector2(19, 68)
+
+[node name="Zombie29" parent="." unique_id=1409125380 instance=ExtResource("4_mixcd")]
+position = Vector2(56, 69)
+
+[node name="Zombie30" parent="." unique_id=1669575392 instance=ExtResource("4_mixcd")]
+position = Vector2(17, 91)
+
+[node name="Zombie31" parent="." unique_id=169813348 instance=ExtResource("4_mixcd")]
+position = Vector2(36, 134)
+
+[node name="Zombie32" parent="." unique_id=709286258 instance=ExtResource("4_mixcd")]
+position = Vector2(55, 134)
+
+[node name="Zombie33" parent="." unique_id=505950371 instance=ExtResource("4_mixcd")]
+position = Vector2(37, 111)
+
+[node name="Zombie34" parent="." unique_id=1195933376 instance=ExtResource("4_mixcd")]
+position = Vector2(18, 111)
+
+[node name="Zombie35" parent="." unique_id=1192042879 instance=ExtResource("4_mixcd")]
+position = Vector2(55, 112)
+
+[node name="Zombie36" parent="." unique_id=957580139 instance=ExtResource("4_mixcd")]
+position = Vector2(16, 134)
+
+[node name="Zombie37" parent="." unique_id=1315575939 instance=ExtResource("4_mixcd")]
+position = Vector2(96, 136)
+
+[node name="Zombie38" parent="." unique_id=1885114067 instance=ExtResource("4_mixcd")]
+position = Vector2(115, 136)
+
+[node name="Zombie39" parent="." unique_id=1852615781 instance=ExtResource("4_mixcd")]
+position = Vector2(97, 113)
+
+[node name="Zombie40" parent="." unique_id=842127746 instance=ExtResource("4_mixcd")]
+position = Vector2(78, 113)
+
+[node name="Zombie41" parent="." unique_id=1308281115 instance=ExtResource("4_mixcd")]
+position = Vector2(115, 114)
+
+[node name="Zombie42" parent="." unique_id=1747021043 instance=ExtResource("4_mixcd")]
+position = Vector2(76, 136)
+
+[node name="Zombie43" parent="." unique_id=989734300 instance=ExtResource("4_mixcd")]
+position = Vector2(97, 92)
+
+[node name="Zombie44" parent="." unique_id=1721027378 instance=ExtResource("4_mixcd")]
+position = Vector2(116, 92)
+
+[node name="Zombie45" parent="." unique_id=956984017 instance=ExtResource("4_mixcd")]
+position = Vector2(98, 69)
+
+[node name="Zombie46" parent="." unique_id=1929463197 instance=ExtResource("4_mixcd")]
+position = Vector2(79, 69)
+
+[node name="Zombie47" parent="." unique_id=310059432 instance=ExtResource("4_mixcd")]
+position = Vector2(116, 70)
+
+[node name="Zombie48" parent="." unique_id=1967774966 instance=ExtResource("4_mixcd")]
+position = Vector2(77, 92)
