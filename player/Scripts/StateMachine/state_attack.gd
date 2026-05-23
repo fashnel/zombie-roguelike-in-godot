@@ -3,7 +3,7 @@ class_name State_Attack extends State
 var attacking : bool = false
 
 @export var attack_sound : AudioStream
-@export_range(1,20,0.5) var decelerate_speed : float = 13.0
+@export_range(1,20,0.5) var decelerate_speed : float = 5.0
 
 @onready var animation_player : AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var audio : AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"

@@ -35,7 +35,7 @@ position = Vector2(247, -61)
 position = Vector2(123, 138)
 
 [node name="Zombie2" parent="." unique_id=836431611 instance=ExtResource("4_mixcd")]
-position = Vector2(123, 138)
+position = Vector2(123, 163)
 
 [node name="Zombie3" parent="." unique_id=1972349085 instance=ExtResource("4_mixcd")]
-position = Vector2(123, 138)
+position = Vector2(151, 137)

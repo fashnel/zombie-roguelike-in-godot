@@ -20,6 +20,14 @@
 [ext_resource type="Script" uid="uid://cnjfk4h037nw1" path="res://Enemies/Scripts/EnemyStateMachine.gd" id="18_6b168"]
 [ext_resource type="Script" uid="uid://d16sc0j7iypwj" path="res://Enemies/Scripts/States/enemy_state_idle.gd" id="19_ivmfb"]
 [ext_resource type="Script" uid="uid://dmuv0rcvawgg4" path="res://Enemies/Scripts/States/enemy_state_wander.gd" id="20_d85x4"]
+[ext_resource type="PackedScene" uid="uid://bkvn6waff7gip" path="res://GeneralNodes/hurt_box/hurt_box.tscn" id="21_88pdl"]
+[ext_resource type="Script" uid="uid://cvsb0a8qpa7e" path="res://Enemies/Scripts/States/enemy_state_stun.gd" id="21_fvwp1"]
+[ext_resource type="PackedScene" uid="uid://berrlk5h22edu" path="res://GeneralNodes/hit_box/hit_box.tscn" id="23_8ncuj"]
+[ext_resource type="Script" uid="uid://xm2f310v2xlb" path="res://Enemies/Scripts/States/enemy_state_destroy.gd" id="24_a03xx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvwp1"]
+radius = 7.0
+height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xllce"]
 radius = 5.0
@@ -187,13 +195,27 @@ collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_kt5al")
 
+[node name="HurtBox" parent="." unique_id=533934817 instance=ExtResource("21_88pdl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=228692145]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_fvwp1")
+debug_color = Color(0.99377733, 0, 0.23942569, 0.41960785)
+
+[node name="HitBox" parent="." unique_id=845449013 instance=ExtResource("23_8ncuj")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=716023412]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_fvwp1")
+debug_color = Color(0.64751464, 0.5201692, 0, 0.41960785)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034104609]
 shape = SubResource("CircleShape2D_xllce")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=622123306]
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_0x5pr")
-animation = &"walk_up"
+animation = &"idle_down"
 autoplay = "idle_down"
 
 [node name="ShadowSprite" type="Sprite2D" parent="." unique_id=1628996863]
@@ -207,10 +229,21 @@ script = ExtResource("18_6b168")
 
 [node name="Idle" type="Node" parent="EnemyStateMachine" unique_id=915869637 node_paths=PackedStringArray("after_idle_state")]
 script = ExtResource("19_ivmfb")
-state_duration_max = 3.0
 after_idle_state = NodePath("../Wander")
 
 [node name="Wander" type="Node" parent="EnemyStateMachine" unique_id=833237953 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_d85x4")
 state_cycles_max = 10
 next_state = NodePath("../Idle")
+
+[node name="Stun" type="Node" parent="EnemyStateMachine" unique_id=140687998 node_paths=PackedStringArray("next_state")]
+script = ExtResource("21_fvwp1")
+speed_knockback = 80.0
+next_state = NodePath("../Wander")
+
+[node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=653338771]
+script = ExtResource("24_a03xx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=862195420]
+
+[node name="DestroyEffectSprite" type="AnimatedSprite2D" parent="." unique_id=580039093]
