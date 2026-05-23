@@ -20,7 +20,7 @@ func Process(_delta : float) -> EnemyState:
 	return null
 	
 	
-func Physics(delta : float) -> EnemyState:
+func Physics(_delta : float) -> EnemyState:
 	return null
 	
 	

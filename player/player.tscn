@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cgeq2rp25cxdm" path="res://assets/entities/player/walk/left_2.PNG" id="11_ujl30"]
 [ext_resource type="Texture2D" uid="uid://yg1jb3em2xss" path="res://assets/entities/player/walk/left_1.PNG" id="12_31cv2"]
 [ext_resource type="Texture2D" uid="uid://dji4j1rbqrvse" path="res://assets/entities/player/idle/right_1.PNG" id="14_dt7fs"]
-[ext_resource type="Script" uid="uid://comiyru525qwp" path="res://player/Scripts/StateMachine/player_state_machine.gd" id="14_f1ej7"]
+[ext_resource type="Script" uid="uid://comiyru525qwp" path="res://player/Scripts/player_state_machine.gd" id="14_f1ej7"]
 [ext_resource type="Script" uid="uid://d233kgb70i638" path="res://player/Scripts/StateMachine/state_walk.gd" id="15_a8ls1"]
 [ext_resource type="Script" uid="uid://db7nrb2w2ul0n" path="res://player/Scripts/StateMachine/state_idle.gd" id="15_oprun"]
 [ext_resource type="Texture2D" uid="uid://cjn3txpv4bo3u" path="res://assets/entities/player/idle/right_2.PNG" id="15_wnwbv"]
@@ -33,7 +33,9 @@
 [ext_resource type="AudioStream" uid="uid://qggddmywjlo5" path="res://assets/sound/sfx/knife_attack.wav" id="29_wqfne"]
 [ext_resource type="PackedScene" uid="uid://bkvn6waff7gip" path="res://GeneralNodes/hurt_box/hurt_box.tscn" id="32_1s1yo"]
 [ext_resource type="Script" uid="uid://cfxxai1txrhiy" path="res://player/Scripts/InteractionsHost.gd" id="32_5ejfk"]
+[ext_resource type="Script" uid="uid://bukqcihxj5g78" path="res://player/Scripts/StateMachine/state_stun.gd" id="32_ge24q"]
 [ext_resource type="Script" uid="uid://dwdtxedv8avki" path="res://player/Scripts/camera.gd" id="32_jd2rm"]
+[ext_resource type="PackedScene" uid="uid://berrlk5h22edu" path="res://GeneralNodes/hit_box/hit_box.tscn" id="35_q28gw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uvqg"]
 radius = 5.0
@@ -70,12 +72,12 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("9_gl8cc")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
-atlas = ExtResource("2_qfm1y")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_a8ls1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qfm1y")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
@@ -182,10 +184,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tuyoq")
+"texture": SubResource("AtlasTexture_qlg0r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qlg0r")
+"texture": SubResource("AtlasTexture_tuyoq")
 }],
 "loop": true,
 "name": &"idle_down",
@@ -272,6 +274,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ejfk"]
 radius = 7.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ge24q"]
+radius = 5.0
+height = 10.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1380528057]
 position = Vector2(0, -5)
 collision_mask = 16
@@ -305,6 +311,9 @@ attack_sound = ExtResource("29_wqfne")
 [node name="Idle" type="Node" parent="StateMachine" unique_id=626810076]
 script = ExtResource("15_oprun")
 
+[node name="Stun" type="Node" parent="StateMachine" unique_id=1573614849]
+script = ExtResource("32_ge24q")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1410316906]
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
@@ -328,3 +337,10 @@ monitoring = false
 position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_5ejfk")
 debug_color = Color(0.8608217, 0, 0.24422756, 0.41960785)
+
+[node name="HitBox" parent="." unique_id=845449013 instance=ExtResource("35_q28gw")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=935314574]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_ge24q")

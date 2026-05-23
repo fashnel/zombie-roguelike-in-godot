@@ -3,25 +3,32 @@ class_name Player extends CharacterBody2D
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var last_velocity_normalized : Vector2 = Vector2.ZERO
+var invulnerable : bool = false
+var hp : int = 6
+var max_hp : int = 6
 
 @onready var animation_player : AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine : PlayerStateMachine = $StateMachine
+@onready var hit_box : HitBox = $HitBox
 
 signal DirectionChanged(new_direction : Vector2) 
+signal player_damaged(hurt_box : HurtBox)
 
 func _ready() -> void:
 	PlayerManager.player = self
 	state_machine.Initialize(self)
+	hit_box.Damaged.connect(_take_damage)
+	update_hp(99)
 	pass
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	direction = Vector2(
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down")
 	).normalized()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
@@ -57,3 +64,30 @@ func AnimDirection() -> String:
 		return "left"
 	else:
 		return "right"
+
+func _take_damage(hurt_box : HurtBox) -> void:
+	if invulnerable:
+		return
+	update_hp(-hurt_box.damage)
+	if hp > 0:
+		player_damaged.emit(hurt_box)
+	else:
+		player_damaged.emit(hurt_box)
+		update_hp(99)
+	pass
+	
+
+func update_hp(delta : int) -> void:
+	hp = clampi(hp + delta, 0, max_hp)
+	pass
+	
+
+func make_invulnerable(_duration : float = 1.0) -> void:
+	invulnerable = true
+	
+	
+	await get_tree().create_timer(_duration).timeout
+	invulnerable = false
+	
+	
+	pass

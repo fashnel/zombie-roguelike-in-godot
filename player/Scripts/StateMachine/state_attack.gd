@@ -26,10 +26,9 @@ func Enter() -> void:
 	
 	
 func Exit() -> void:
-	animation_player.animation_finished.disconnect(EndAttack)
 	attacking = false
 	hurt_box.monitoring = false 
-	
+	animation_player.animation_finished.disconnect(EndAttack)
 	pass
 	
 func Process(_delta : float) -> State:
