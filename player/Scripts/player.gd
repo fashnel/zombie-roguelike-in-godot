@@ -4,8 +4,8 @@ var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var last_velocity_normalized : Vector2 = Vector2.ZERO
 var invulnerable : bool = false
-var hp : int = 6
-var max_hp : int = 6
+var hp : int = 10
+var max_hp : int = 10
 
 @onready var animation_player : AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine : PlayerStateMachine = $StateMachine
@@ -79,6 +79,8 @@ func _take_damage(hurt_box : HurtBox) -> void:
 
 func update_hp(delta : int) -> void:
 	hp = clampi(hp + delta, 0, max_hp)
+	var lost_hp = max_hp - hp
+	PlayerHud.update_hp(lost_hp)
 	pass
 	
 

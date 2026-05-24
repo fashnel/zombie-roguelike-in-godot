@@ -22,6 +22,7 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 
 LevelManager="*uid://cso6gbovgcc1y"
 PlayerManager="*uid://chhbhm7a05pku"
+PlayerHud="*uid://cw6dg0ph1g0a0"
 
 [display]
 

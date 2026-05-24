@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cw6dg0ph1g0a0"]
+
+[ext_resource type="Script" uid="uid://d4cctxwkwdffn" path="res://GUI/player_hud.gd" id="1_1hnfw"]
+[ext_resource type="Texture2D" uid="uid://bacoco1n800de" path="res://assets/ui/health_bar.PNG" id="1_pk8ul"]
+[ext_resource type="PackedScene" uid="uid://b1pun5qhqjgc2" path="res://GUI/hp.tscn" id="2_7qat5"]
+
+[node name="PlayerHud" type="CanvasLayer" unique_id=197462868]
+script = ExtResource("1_1hnfw")
+
+[node name="Control" type="Control" parent="." unique_id=1596590050]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=918354504]
+position = Vector2(34.5, 10.500001)
+scale = Vector2(1, 0.9375)
+texture = ExtResource("1_pk8ul")
+region_enabled = true
+region_rect = Rect2(1, 0, 63, 16)
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Control" unique_id=851694445]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 91.0
+offset_bottom = 17.0
+theme_override_constants/h_separation = 1
+
+[node name="HP" parent="Control/HFlowContainer" unique_id=40302798 instance=ExtResource("2_7qat5")]
+layout_mode = 2
+
+[node name="HP2" parent="Control/HFlowContainer" unique_id=703251871 instance=ExtResource("2_7qat5")]
+layout_mode = 2
+
+[node name="HP3" parent="Control/HFlowContainer" unique_id=1437778526 instance=ExtResource("2_7qat5")]
+layout_mode = 2
+
+[node name="HP4" parent="Control/HFlowContainer" unique_id=1872266311 instance=ExtResource("2_7qat5")]
+layout_mode = 2
+
+[node name="HP5" parent="Control/HFlowContainer" unique_id=976045307 instance=ExtResource("2_7qat5")]
+layout_mode = 2
+
+[node name="HP6" parent="Control/HFlowContainer" unique_id=316401833 instance=ExtResource("2_7qat5")]
+layout_mode = 2
+
+[node name="HP7" parent="Control/HFlowContainer" unique_id=841064860 instance=ExtResource("2_7qat5")]
+layout_mode = 2
+
+[node name="HP8" parent="Control/HFlowContainer" unique_id=33107672 instance=ExtResource("2_7qat5")]
+layout_mode = 2
+
+[node name="HP9" parent="Control/HFlowContainer" unique_id=344414327 instance=ExtResource("2_7qat5")]
+layout_mode = 2
+
+[node name="HP10" parent="Control/HFlowContainer" unique_id=1045832420 instance=ExtResource("2_7qat5")]
+layout_mode = 2

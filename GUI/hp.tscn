@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b1pun5qhqjgc2"]
+
+[ext_resource type="Script" uid="uid://dlccqo0dsclyr" path="res://GUI/hp.gd" id="1_ag1xs"]
+[ext_resource type="Texture2D" uid="uid://bfcyt7g6ml4pd" path="res://assets/ui/health_point.PNG" id="1_u2p3p"]
+
+[node name="HP" type="Control" unique_id=40302798]
+custom_minimum_size = Vector2(5, 13)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ag1xs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1992740155]
+texture = ExtResource("1_u2p3p")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 1, 5, 13)
