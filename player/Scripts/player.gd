@@ -86,10 +86,6 @@ func update_hp(delta : int) -> void:
 
 func make_invulnerable(_duration : float = 1.0) -> void:
 	invulnerable = true
-	
-	
 	await get_tree().create_timer(_duration).timeout
 	invulnerable = false
-	
-	
 	pass

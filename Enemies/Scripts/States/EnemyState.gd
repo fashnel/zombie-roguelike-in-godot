@@ -3,6 +3,7 @@ class_name EnemyState extends Node
 ## Stores
 var enemy : Enemy
 var state_machine : EnemyStateMachine
+var interruptible : bool = true
 
 func init() -> void:
 	pass 

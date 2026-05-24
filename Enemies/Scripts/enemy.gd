@@ -15,6 +15,7 @@ var invulnerable : bool = false
 
 @onready var animation_player : AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box : HitBox = $HitBox
+@onready var hurt_box : HurtBox = $HurtBox
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
 
 # Called when the node enters the scene tree for the first time.
@@ -67,11 +68,11 @@ func AnimDirection() -> String:
 	else:
 		return "right"
 		
-func _take_damage(hurt_box: HurtBox) -> void:
+func _take_damage(_hurt_box: HurtBox) -> void:
 	if invulnerable:
 		return
-	hp -= hurt_box.damage
+	hp -= _hurt_box.damage
 	if hp > 0:
-		EnemyDamaged.emit(hurt_box)
+		EnemyDamaged.emit(_hurt_box)
 	else:
-		enemy_destroyed.emit(hurt_box )
+		enemy_destroyed.emit(_hurt_box )

@@ -25,17 +25,19 @@
 [ext_resource type="PackedScene" uid="uid://berrlk5h22edu" path="res://GeneralNodes/hit_box/hit_box.tscn" id="23_8ncuj"]
 [ext_resource type="Script" uid="uid://xm2f310v2xlb" path="res://Enemies/Scripts/States/enemy_state_destroy.gd" id="24_a03xx"]
 [ext_resource type="AudioStream" uid="uid://c5lulty0ff3xu" path="res://assets/sound/sfx/hit.wav" id="24_mk5ap"]
+[ext_resource type="Script" uid="uid://rhv1o6furgl1" path="res://Enemies/Scripts/States/enemy_state_chase.gd" id="26_1n65e"]
+[ext_resource type="PackedScene" uid="uid://de60khc6drd14" path="res://Enemies/vision_area.tscn" id="27_kta0w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvwp1"]
-radius = 7.0
-height = 16.0
+radius = 6.0
+height = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mk5ap"]
 radius = 7.0
-height = 16.0
+height = 18.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xllce"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_mk5ap"]
+radius = 3.0413814
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4obea"]
 atlas = ExtResource("1_xllce")
@@ -192,6 +194,10 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1n65e"]
+radius = 6.0
+height = 14.0
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xllce"]
 load_path = "res://.godot/imported/player_shadow.PNG-0689348f55c599e5a290be71961f3186.ctex"
 
@@ -203,7 +209,7 @@ script = ExtResource("1_kt5al")
 [node name="HurtBox" parent="." unique_id=533934817 instance=ExtResource("21_88pdl")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=228692145]
-position = Vector2(0, -5)
+position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_fvwp1")
 debug_color = Color(0.99377733, 0, 0.23942569, 0.41960785)
 
@@ -215,13 +221,22 @@ shape = SubResource("CapsuleShape2D_mk5ap")
 debug_color = Color(0.64751464, 0.5201692, 0, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034104609]
-shape = SubResource("CircleShape2D_xllce")
+position = Vector2(0, 0.5)
+shape = SubResource("CircleShape2D_mk5ap")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=622123306]
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_0x5pr")
 animation = &"idle_down"
 autoplay = "idle_down"
+
+[node name="AttackHurtBox" parent="AnimatedSprite2D" unique_id=867405202 instance=ExtResource("21_88pdl")]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/AttackHurtBox" unique_id=1587671295]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_1n65e")
+debug_color = Color(0.99377733, 0, 0.23942569, 0.41960785)
 
 [node name="ShadowSprite" type="Sprite2D" parent="." unique_id=1628996863]
 self_modulate = Color(0.6705983, 0.6705983, 0.6705983, 0.8)
@@ -244,13 +259,25 @@ next_state = NodePath("../Idle")
 [node name="Stun" type="Node" parent="EnemyStateMachine" unique_id=140687998 node_paths=PackedStringArray("next_state")]
 script = ExtResource("21_fvwp1")
 hit_sound = ExtResource("24_mk5ap")
-next_state = NodePath("../Wander")
+next_state = NodePath("../Chase")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=653338771]
 script = ExtResource("24_a03xx")
 hit_sound = ExtResource("24_mk5ap")
 
+[node name="Chase" type="Node" parent="EnemyStateMachine" unique_id=1816396510 node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
+script = ExtResource("26_1n65e")
+vision_area = NodePath("../../VisionArea")
+attack_area = NodePath("../../AnimatedSprite2D/AttackHurtBox")
+next_state = NodePath("../Idle")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=862195420]
 volume_db = -5.0
 
 [node name="DestroyEffectSprite" type="AnimatedSprite2D" parent="." unique_id=580039093]
+
+[node name="VisionArea" parent="." unique_id=1425933169 instance=ExtResource("27_kta0w")]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="VisionArea" unique_id=1570436023]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(-8, 0, 8, 0, 64, 64, -64, 64)

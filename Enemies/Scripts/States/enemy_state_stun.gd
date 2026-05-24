@@ -16,7 +16,9 @@ var _timer : float = 0.0
 var _damage_position : Vector2
 var _direction : Vector2
 
+
 func init() -> void:
+	interruptible = false
 	enemy.EnemyDamaged.connect(_on_enemy_damaged)
 	pass 
 
